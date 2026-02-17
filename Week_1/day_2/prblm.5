@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Enrollment Form</title>
+</head>
+<body>
+
+<header>
+    <h1>Online Learning Platform</h1>
+</header>
+
+<main>
+    <section>
+        <h2>Course Enrollment</h2>
+
+        <form action="course" method="post">
+
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email" required 
+                   placeholder="example@email.com">
+            <br><br>
+
+             
+            <label for="course">Choose a Course:</label><br>
+            <input list="course-options" id="course" name="course" 
+                   required placeholder="Type course name">
+
+            <datalist id="course-options">
+                <option value="HTML Fundamentals">
+                <option value="CSS Basics">
+                <option value="JavaScript Essentials">
+                <option value="Python Programming">
+                <option value="Data Science Introduction">
+            </datalist>
+            <br><br>
+
+             
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age" 
+                   min="16" max="65" required>
+            <br><br>
+
+          
+            <label for="skill">Skill Level (1 = Beginner, 10 = Advanced):</label><br>
+            <input type="range" id="skill" name="skill" 
+                   min="1" max="10" value="5">
+            <br>
+
+            <p>Skill Level Indicator:</p>
+            <meter value="5" min="1" max="10" 
+                   low="3" high="7" optimum="8">
+                5 out of 10
+            </meter>
+            <br><br>
+
+          
+            <p>Enrollment Completion Progress:</p>
+            <progress value="70" max="100">70%</progress>
+            <br><br>
+
+         
+            <input type="submit" value="Enroll Now">
+
+        </form>
+    </section>
+</main>
+
+</body>
+</html>
