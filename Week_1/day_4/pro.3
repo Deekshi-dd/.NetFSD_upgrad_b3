@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store Discount</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2495a4;
+            display: flex;
+            justify-content: center;
+            align-items: flex_start;
+            height: 30vh;
+        }
+
+        .bill-container {
+            background-color: rgb(220, 184, 184);
+            padding: 30px;
+            width: 320px;
+            border-radius: 30px;
+            box-shadow: 0px 4px 12px rgba(169, 12, 169, 0.51);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .final {
+            font-weight: bold;
+            color: green;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="bill-container">
+        <h2>Online Store Bill</h2>
+
+        <p id="amount"></p>
+        <p id="discount"></p>
+        <p id="final" class="final"></p>
+    </div>
+
+    <script>
+
+        let amount = 4500;
+
+        let discount = 0;
+        let finalAmount = 0;
+
+        if (amount >= 5000) {
+            discount = amount * 0.20; 
+        }
+        else if (amount >= 3000) {
+            discount = amount * 0.10;  
+        }
+        else {
+            discount = 0;             
+        }
+
+        finalAmount = amount - discount;
+
+        document.getElementById("amount").innerHTML = "Purchase Amount: ₹ " + amount;
+        document.getElementById("discount").innerHTML = "Discount: ₹ " + discount;
+        document.getElementById("final").innerHTML = "Final Payable: ₹ " + finalAmount;
+    </script>
+
+</body>
+</html>
