@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Responsive Webpage</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(205, 225, 232);
+        }
+
+        header {
+            background-color: rgb(71, 71, 171);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            color: rgb(202, 131, 131);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        main {
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+
+    
+            body {
+                background-color: rgb(167, 110, 110);
+            }
+
+        
+            main {
+                font-size: 16px;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav a {
+                border-top: 1px solid #444;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Responsive Website</h1>
+        <p>Resize the browser to see changes</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <main>
+        <h2>Welcome</h2>
+        <p>
+            <p>
+                  Welcome to our website! We are excited to have you here. 
+                  This platform is designed to provide useful information, helpful resources, and a smooth user experience. 
+                  Explore the content, discover new ideas, and feel free to connect with us for any support or queries.
+            </p>
+        </p>
+    </main>
+
+</body>
+</html>
