@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Analysis Program</title>
+</head>
+<body>
+
+<h2>Number Analysis Program</h2>
+
+<p id="sign"></p>
+<p id="parity"></p>
+<p id="range"></p>
+
+<script>
+    let number = 7;
+
+
+    let signResult = (number >= 0) ? "Positive Number" : "Negative Number";
+
+
+    let parityResult;
+
+    if (number % 2 === 0) {
+        parityResult = "Even Number";
+    } else {
+        parityResult = "Odd Number";
+    }
+
+
+    let rangeResult = "";
+
+    for (let i = 1; i <= number; i++) {
+        rangeResult += i + " ";
+    }
+
+    document.getElementById("sign").innerHTML = "Sign: " + signResult;
+    document.getElementById("parity").innerHTML = "Parity: " + parityResult;
+    document.getElementById("range").innerHTML = "Numbers from 1 to " + number + ": " + rangeResult;
+
+    console.log("Number Entered: " + number);
+    console.log("Sign: " + signResult);
+    console.log("Parity: " + parityResult);
+    console.log("Numbers from 1 to " + number + ": " + rangeResult);
+</script>
+
+</body>
+</html>
