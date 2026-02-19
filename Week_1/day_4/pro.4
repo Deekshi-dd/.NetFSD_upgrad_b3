@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Signal Control</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #bc5f42;
+            display: flex;
+            justify-content: center;
+            align-items: flex_start;
+            height: 30vh;
+        }
+
+        .traffic-box {
+            background-color: rgb(246, 218, 13);
+            padding: 30px;
+            width: 100px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #543de7;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="traffic-box">
+        <h2>Traffic Signal System</h2>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        
+        let signal = "yellow";
+
+        let message;
+
+
+        switch(signal) {
+            case "red":
+                message = "Stop";
+                break;
+
+            case "yellow":
+                message = "Get Ready";
+                break;
+
+            case "green":
+                message = "Go";
+                break;
+
+            default:
+                message = "Invalid Signal Color";
+        }
+
+
+        console.log("Signal Color: " + signal);
+        console.log("Instruction: " + message);
+
+        document.getElementById("result").innerHTML = message;
+
+    </script>
+
+</body>
+</html>
