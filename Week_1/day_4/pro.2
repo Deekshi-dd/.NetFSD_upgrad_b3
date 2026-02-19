@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Evaluation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #cacc45;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .card {
+            background-color: rgb(218, 198, 198);
+            width: 500px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(151, 127, 127, 0.2);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .gradeA { color: green; }
+        .gradeB { color: blue; }
+        .gradeC { color: orange; }
+        .fail { color: red; }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Student Grade Evaluation</h2>
+    <p id="marks"></p>
+    <p id="grade" class="result"></p>
+</div>
+
+<script>
+    let marks = 72;  
+    let grade;
+    let gradeClass;
+
+    if (marks >= 75) {
+        grade = "Grade A";
+        gradeClass = "gradeA";
+    } 
+    else if (marks >= 60) {
+        grade = "Grade B";
+        gradeClass = "gradeB";
+    } 
+    else if (marks >= 40) {
+        grade = "Grade C";
+        gradeClass = "gradeC";
+    } 
+    else {
+        grade = "Fail";
+        gradeClass = "fail";
+    }
+
+    document.getElementById("marks").innerHTML = "Marks: " + marks;
+    document.getElementById("grade").innerHTML = "Result: " + grade;
+    document.getElementById("grade").classList.add(gradeClass);
+</script>
+
+</body>
+</html>
