@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input {
+            padding: 8px;
+            width: 220px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Simple Greeting Program</h2>
+
+    <input type="text" id="username" placeholder="Enter your name">
+    <button onclick="generateGreeting()">Generate Greeting</button>
+
+    
+    <p id="greetingMessage"></p>
+
+    <script>
+        function generateGreeting() {
+            
+          
+            var name = document.getElementById("username").value;
+            
+            
+            showGreeting(name);
+        }
+
+        function showGreeting(userName) {
+            
+      
+            var greeting = "Hello, " + userName + "! Welcome to our website.";
+        
+            document.getElementById("greetingMessage").innerHTML = greeting;
+        }
+    </script>
+
+</body>
+</html>
