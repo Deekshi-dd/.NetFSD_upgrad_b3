@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #91c0b2;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .profile-card {
+            background-color: rgb(120, 146, 59);
+            width: 320px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-card h2 {
+            margin-bottom: 15px;
+        }
+
+        .profile-card p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        input {
+            padding: 6px;
+            width: 150px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            margin-top: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <h2>Student Profile</h2>
+
+        <div id="studentDetails"></div>
+
+        <input type="number" id="newMarks" placeholder="Enter new marks">
+        <br>
+        <button id="updateBtn">Update Marks</button>
+    </div>
+
+    <script>
+        
+        var student = {
+            name: "Anjali",
+            rollNo: 101,
+            marks: 75
+        };
+
+        
+        function updateStudentProfile(studentObj) {
+            document.getElementById("studentDetails").innerHTML =
+                "<p><strong>Name:</strong> " + studentObj.name + "</p>" +
+                "<p><strong>Roll No:</strong> " + studentObj.rollNo + "</p>" +
+                "<p><strong>Marks:</strong> " + studentObj.marks + "</p>";
+        }
+
+        
+        function updateMarks(newMarks) {
+            student.marks = newMarks;  
+            updateStudentProfile(student);  
+        }
+
+
+        document.getElementById("updateBtn").addEventListener("click", function() {
+            var marksValue = document.getElementById("newMarks").value;
+            updateMarks(marksValue);
+        });
+
+
+        updateStudentProfile(student);
+    </script>
+
+</body>
+</html>
