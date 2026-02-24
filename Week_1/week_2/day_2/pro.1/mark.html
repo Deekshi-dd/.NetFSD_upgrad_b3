@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Marks Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            width: 400px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        pre {
+            text-align: left;
+            margin-top: 20px;
+            background: #eee;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Marks Analyzer</h2>
+        <button id="analyzeBtn">Analyze Marks</button>
+        <pre id="output"></pre>
+    </div>
+
+    <script type="module" src="marksAnalyzer.js"></script>
+
+</body>
+</html>
