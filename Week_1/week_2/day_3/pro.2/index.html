@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container{
+      background-color: white;
+      padding: 30px;
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h1{
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input{
+      width: 70%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    button{
+      padding: 8px 12px;
+      margin: 5px 3px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover{
+      opacity: 0.85;
+    }
+
+    .add-btn{
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .list-btn{
+      background-color: #2196F3;
+      color: white;
+    }
+
+    .delete-btn{
+      background-color: #f44336;
+      color: white;
+      font-size: 12px;
+      padding: 5px 8px;
+      margin-left: 10px;
+    }
+
+    ul{
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li{
+      background-color: #f4f4f4;
+      margin: 8px 0;
+      padding: 8px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>Task Manager with Async Storage</h1>
+
+    <input type="text" id="task">
+    <button class="add-btn" onclick="handleAddTask()">Add Task</button>
+    <br>
+    <button class="list-btn" onclick="handleListTasks()">List Task</button>
+
+    <ul id="res"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
