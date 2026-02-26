@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #B4C5E4;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      background-color: #B5FFE9;
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+
+    }
+
+    .container input {
+      width: 60%;
+      padding: 6px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      letter-spacing: 1.2px;
+    }
+
+    .container button {
+      border: none;
+      background-color: #3D52D5;
+      color: white;
+      font-weight: 600;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    #res {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      width: 50%;
+      margin: 20px auto;
+    }
+
+    #res li {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap:5px;
+      border: #3D52D5 1px solid;
+      background-color: #596be187;
+      color: blue;
+      padding:  5px 10px;
+      
+    }
+    #res li span{
+      margin-right: 30px;
+    }
+    #res li .complete-btn{
+      
+      border: none;
+      background-color: #16DB93;
+      padding: 7px;
+      font-weight: 600;
+      color: rgb(20, 19, 19);
+      border-radius: 5px;
+      cursor: pointer;
+
+    }
+    #res li .delete-btn{
+      border: none;
+      background-color: #DE1A1A;
+      padding: 7px;
+      font-weight: 600;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Dynamic To-Do List </h1>
+  <div class="container">
+    <input type="text" id="task">
+    <button id="add-task">Add Task</button>
+
+
+  </div>
+  <ul id="res">
+
+  </ul>
+
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>
