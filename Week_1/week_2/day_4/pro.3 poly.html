@@ -30,35 +30,32 @@
 <div id="output"></div>
 
 <script>
-// Base Class
+
 class Payment {
     pay(amount) {
         return "Processing payment...";
     }
 }
 
-// Subclass 1
 class CreditCardPayment extends Payment {
     pay(amount) {
         return `Paid ₹${amount} using Credit Card`;
     }
 }
 
-// Subclass 2
 class UPIPayment extends Payment {
     pay(amount) {
         return `Paid ₹${amount} using UPI`;
     }
 }
 
-// Subclass 3
+
 class CashPayment extends Payment {
     pay(amount) {
         return `Paid ₹${amount} using Cash`;
     }
 }
 
-// Function demonstrating Polymorphism
 function makePayment(type) {
     let payment;
     const amount = 500;
