@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Student Feedback Form</h2>
+
+    <form id="feedbackForm">
+        <input type="text" id="name" placeholder="Enter your Name">
+        <input type="email" id="email" placeholder="Enter your Email">
+
+        <select id="rating">
+            <option value="">Select Course Rating</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Average">Average</option>
+            <option value="Poor">Poor</option>
+        </select>
+
+        <textarea id="comments" placeholder="Enter your Comments"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="message"></div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $("#feedbackForm").submit(function(event){
+
+    event.preventDefault();
+
+    let name = $("#name").val().trim();
+    let email = $("#email").val().trim();
+
+    $(".message").removeClass("error success").text("");
+
+    if(name === "" && email === ""){
+        $(".message")
+            .addClass("error")
+            .text("Please enter your Name and Email.");
+    }
+    else if(name === ""){
+        $(".message")
+            .addClass("error")
+            .text("Please enter your Name.");
+    }
+    else if(email === ""){
+        $(".message")
+            .addClass("error")
+            .text("Please enter your Email.");
+    }
+    else{
+        $(".message")
+            .addClass("success")
+            .text("Thank you for your feedback! ✅");
+
+        $("#feedbackForm")[0].reset();
+    }
+
+});
+});
+</script>
+
+</body>
+</html>
