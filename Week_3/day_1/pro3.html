@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List - Add to Cart</title>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+
+        .header {
+            background: #222;
+            color: white;
+            padding: 15px;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .products {
+            width: 700px;
+            margin: 30px auto;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        button {
+            padding: 6px 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-left: 10px;
+            color: green;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    🛒 Cart Items: <span id="cartCount">0</span>
+</div>
+
+<div class="products">
+
+    <div class="product">
+        <h3>Laptop</h3>
+        <button class="addCart" data-name="Laptop">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+
+    <div class="product">
+        <h3>Smartphone</h3>
+        <button class="addCart" data-name="Smartphone">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+
+    <div class="product">
+        <h3>Headphones</h3>
+        <button class="addCart" data-name="Headphones">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+
+    <div class="product">
+        <h3>Smartwatch</h3>
+        <button class="addCart" data-name="Smartwatch">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+    let count = 0;
+
+    
+    $(".products").on("click", ".addCart", function(){
+
+        count++;
+
+
+        $("#cartCount").text(count);
+
+    
+        $(this).prop("disabled", true);
+
+    
+        $(this).text("Added");
+
+        $(this).attr("data-added", "true");
+
+        $(this).siblings(".message").text("✔ Added to cart");
+
+    });
+
+});
+</script>
+
+</body>
+</html>
