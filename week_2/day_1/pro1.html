@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Notes App</title>
+</head>
+
+<body style="text-align:center; margin-top:50px; font-family:Arial;">
+
+    <h2>My Daily Notes</h2>
+
+    
+    <textarea id="noteBox" rows="8" cols="40"
+        placeholder="Write your notes here..."></textarea>
+    <br><br>
+
+
+    <button onclick="saveNote()">Save</button>
+    <button onclick="getNote()">Get Item</button>
+    <button onclick="clearNote()">Clear</button>
+
+    <h3>Output</h3>
+    <p id="output" style="color:green;"></p>
+
+<script>
+
+
+    window.onload = function () {
+        getNote();  
+    };
+
+
+    function saveNote() {
+
+        var noteText = document.getElementById("noteBox").value;
+
+        
+        localStorage.setItem("dailyNote", noteText);
+
+        alert("Note Saved Successfully!");
+    }
+
+    
+    function getNote() {
+
+        
+        var storedNote = localStorage.getItem("dailyNote");
+
+        if (storedNote !== null) {
+
+            
+            document.getElementById("noteBox").value = storedNote;
+
+            
+            document.getElementById("output").innerHTML = storedNote;
+
+        } else {
+            document.getElementById("output").innerHTML = "No note found!";
+        }
+    }
+
+
+    function clearNote() {
+
+        
+        localStorage.removeItem("dailyNote");
+
+        
+        document.getElementById("noteBox").value = "";
+        document.getElementById("output").innerHTML = "";
+
+        alert("Note Cleared!");
+    }
+
+</script>
+
+</body>
+</html>
