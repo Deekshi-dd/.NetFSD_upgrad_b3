@@ -1,172 +1,163 @@
+﻿using ConsoleApp1;
 using System;
 using System.Data;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
-internal class Program
+class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        var config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
-            .Build();
-
-        string connStr = config.GetConnectionString("DefaultConnection");
+        ProductDAL dal = new ProductDAL();
 
         while (true)
         {
-            Console.WriteLine("\n1.Insert  2.View  3.GetById  4.Update  5.Delete  6.Exit");
-            Console.Write("Enter choice: ");
-            int choice = int.Parse(Console.ReadLine());
+            Console.WriteLine("\n===== PRODUCT MENU =====");
+            Console.WriteLine("1. Insert Product");
+            Console.WriteLine("2. View All Products");
+            Console.WriteLine("3. Get Product By ID");
+            Console.WriteLine("4. Update Product");
+            Console.WriteLine("5. Delete Product");
+            Console.WriteLine("6. Exit");
 
-            if (choice == 6) break;
+            Console.Write("Choose option: ");
 
-            using (SqlConnection conn = new SqlConnection(connStr))
+            if (!int.TryParse(Console.ReadLine(), out int choice))
             {
-                SqlDataAdapter da = new SqlDataAdapter();
-                DataTable dt = new DataTable();
+                Console.WriteLine("Invalid input!");
+                continue;
+            }
 
-              
-                if (choice == 2)
-                {
-                    da.SelectCommand = new SqlCommand("sp_GetAllProducts", conn);
-                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            switch (choice)
+            {
+                case 1:
+                    Insert(dal);
+                    break;
 
-                    da.Fill(dt);
+                case 2:
+                    ViewAll(dal);
+                    break;
 
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        Console.WriteLine($"{row["ProductId"]} | {row["ProductName"]} | {row["Category"]} | {row["Price"]}");
-                    }
-                }
+                case 3:
+                    GetById(dal);
+                    break;
 
-               
-                else if (choice == 3)
-                {
-                    Console.Write("Enter ID: ");
-                    int id = int.Parse(Console.ReadLine());
+                case 4:
+                    Update(dal);
+                    break;
 
-                    da.SelectCommand = new SqlCommand("sp_GetProductById", conn);
-                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                case 5:
+                    Delete(dal);
+                    break;
 
-                    da.SelectCommand.Parameters.Add(new SqlParameter("@ProductId", SqlDbType.Int) { Value = id });
+                case 6:
+                    return;
 
-                    da.Fill(dt);
-
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow r = dt.Rows[0];
-                        Console.WriteLine($"{r["ProductName"]} | {r["Category"]} | {r["Price"]}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Not Found");
-                    }
-                }
-
-               
-                else if (choice == 1)
-                {
-                    da.SelectCommand = new SqlCommand("sp_GetAllProducts", conn);
-                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-                    da.Fill(dt);
-
-                    DataRow row = dt.NewRow();
-
-                    Console.Write("Name: ");
-                    row["ProductName"] = Console.ReadLine();
-
-                    Console.Write("Category: ");
-                    row["Category"] = Console.ReadLine();
-
-                    Console.Write("Price: ");
-                    row["Price"] = decimal.Parse(Console.ReadLine());
-
-                    dt.Rows.Add(row);
-
-                    da.InsertCommand = new SqlCommand("sp_InsertProduct", conn);
-                    da.InsertCommand.CommandType = CommandType.StoredProcedure;
-
-                    da.InsertCommand.Parameters.Add(new SqlParameter("@ProductName", SqlDbType.VarChar, 50, "ProductName"));
-                    da.InsertCommand.Parameters.Add(new SqlParameter("@Category", SqlDbType.VarChar, 50, "Category"));
-                    da.InsertCommand.Parameters.Add(new SqlParameter("@Price", SqlDbType.Decimal, 0, "Price"));
-
-                    da.Update(dt);
-
-                    Console.WriteLine("Inserted Successfully");
-                }
-
-
-                else if (choice == 4)
-                {
-                    da.SelectCommand = new SqlCommand("sp_GetAllProducts", conn);
-                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-                    da.Fill(dt);
-
-                    Console.Write("Enter ID: ");
-                    int id = int.Parse(Console.ReadLine());
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if ((int)row["ProductId"] == id)
-                        {
-                            Console.Write("New Name: ");
-                            row["ProductName"] = Console.ReadLine();
-
-                            Console.Write("New Category: ");
-                            row["Category"] = Console.ReadLine();
-
-                            Console.Write("New Price: ");
-                            row["Price"] = decimal.Parse(Console.ReadLine());
-                        }
-                    }
-
-                    da.UpdateCommand = new SqlCommand("sp_UpdateProduct", conn);
-                    da.UpdateCommand.CommandType = CommandType.StoredProcedure;
-
-                    da.UpdateCommand.Parameters.Add(new SqlParameter("@ProductId", SqlDbType.Int, 0, "ProductId"));
-                    da.UpdateCommand.Parameters.Add(new SqlParameter("@ProductName", SqlDbType.VarChar, 50, "ProductName"));
-                    da.UpdateCommand.Parameters.Add(new SqlParameter("@Category", SqlDbType.VarChar, 50, "Category"));
-                    da.UpdateCommand.Parameters.Add(new SqlParameter("@Price", SqlDbType.Decimal, 0, "Price"));
-
-                    da.Update(dt);
-
-                    Console.WriteLine("Updated Successfully");
-                }
-
-               
-                else if (choice == 5)
-                {
-                    da.SelectCommand = new SqlCommand("sp_GetAllProducts", conn);
-                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-                    da.Fill(dt);
-
-                    Console.Write("Enter ID: ");
-                    int id = int.Parse(Console.ReadLine());
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if ((int)row["ProductId"] == id)
-                        {
-                            row.Delete();
-                        }
-                    }
-
-                    da.DeleteCommand = new SqlCommand("sp_DeleteProduct", conn);
-                    da.DeleteCommand.CommandType = CommandType.StoredProcedure;
-
-                    da.DeleteCommand.Parameters.Add(new SqlParameter("@ProductId", SqlDbType.Int, 0, "ProductId"));
-
-                    da.Update(dt);
-
-                    Console.WriteLine("Deleted Successfully");
-                }
+                default:
+                    Console.WriteLine("Invalid choice!");
+                    break;
             }
         }
+    }
+
+    static void Insert(ProductDAL dal)
+    {
+        Product p = new Product();
+
+        Console.Write("Name: ");
+        p.ProductName = Console.ReadLine();
+
+        Console.Write("Category: ");
+        p.Category = Console.ReadLine();
+
+        Console.Write("Price: ");
+        if (!decimal.TryParse(Console.ReadLine(), out decimal price))
+        {
+            Console.WriteLine("Invalid price!");
+            return;
+        }
+
+        p.Price = price;
+
+        dal.InsertProduct(p);
+        Console.WriteLine("✅ Product Inserted!");
+    }
+
+    static void ViewAll(ProductDAL dal)
+    {
+        DataTable table = dal.GetAllProducts();
+
+        Console.WriteLine("\n--- Product List ---");
+        foreach (DataRow row in table.Rows)
+        {
+            Console.WriteLine($"{row["ProductId"]} | {row["ProductName"]} | {row["Category"]} | {row["Price"]}");
+        }
+    }
+
+    static void GetById(ProductDAL dal)
+    {
+        Console.Write("Enter Product ID: ");
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Invalid ID!");
+            return;
+        }
+
+        var product = dal.GetProductById(id);
+
+        if (product != null)
+        {
+            Console.WriteLine($"ID: {product.ProductId}");
+            Console.WriteLine($"Name: {product.ProductName}");
+            Console.WriteLine($"Category: {product.Category}");
+            Console.WriteLine($"Price: {product.Price}");
+        }
+        else
+        {
+            Console.WriteLine("❌ Product not found!");
+        }
+    }
+
+    static void Update(ProductDAL dal)
+    {
+        Product p = new Product();
+
+        Console.Write("ID: ");
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Invalid ID!");
+            return;
+        }
+
+        p.ProductId = id;
+
+        Console.Write("New Name: ");
+        p.ProductName = Console.ReadLine();
+
+        Console.Write("New Category: ");
+        p.Category = Console.ReadLine();
+
+        Console.Write("New Price: ");
+        if (!decimal.TryParse(Console.ReadLine(), out decimal price))
+        {
+            Console.WriteLine("Invalid price!");
+            return;
+        }
+
+        p.Price = price;
+
+        dal.UpdateProduct(p);
+        Console.WriteLine("✅ Product Updated!");
+    }
+
+    static void Delete(ProductDAL dal)
+    {
+        Console.Write("Enter ID: ");
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Invalid ID!");
+            return;
+        }
+
+        dal.DeleteProduct(id);
+        Console.WriteLine("✅ Product Deleted!");
     }
 }
