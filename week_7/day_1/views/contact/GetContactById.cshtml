@@ -1,0 +1,19 @@
+﻿@model ContactInfo
+
+<h2>Contact Details</h2>
+
+@if (Model != null)
+{
+    <div class="form-group">
+        <p><b>ID:</b> @Model.ContactId</p>
+        <p><b>Name:</b> @Model.FirstName @Model.LastName</p>
+        <p><b>Company:</b> @Model.CompanyName</p>
+        <p><b>Email:</b> @Model.EmailId</p>
+        <p><b>Mobile:</b> @Model.MobileNo</p>
+        <p><b>Designation:</b> @Model.Designation</p>
+    </div>
+}
+else
+{
+    <p class="text-danger">Contact not found</p>
+}
