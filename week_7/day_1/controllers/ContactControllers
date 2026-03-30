@@ -1,0 +1,44 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication4.Models;
+
+namespace WebApplication.Controllers
+{
+    public class ContactController : Controller
+    {
+        static List<ContactInfo> contacts = new List<ContactInfo>();
+
+        public IActionResult ShowContacts()
+        {
+            return View(contacts);
+        }
+
+        public IActionResult GetContactById(int id)
+        {
+            var contact = contacts.FirstOrDefault(c => c.ContactId == id);
+            return View(contact);
+        }
+
+        [HttpGet]
+        public IActionResult AddContact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddContact(ContactInfo contactInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                contacts.Add(contactInfo);
+                return RedirectToAction("ShowContacts");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Invalid data. Please check all fields.";
+                return View();
+            }
+
+            
+        }
+    }
+}
