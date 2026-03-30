@@ -1,12 +1,13 @@
 @model WebApplication3.Models.Product
 
-<h2>Delete Product</h2>
+<h2>Product Details</h2>
 
-<h4>Are you sure you want to delete?</h4>
+<p>ID: @Model.ProductId</p>
+<p>Name: @Model.ProductName</p>
+<p>Price: @Model.Price</p>
+<p>Category: @Model.Category</p>
 
-<p>@Model.ProductName</p>
-
-<form asp-action="Delete" method="post">
-    <input type="hidden" asp-for="ProductId" />
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
+<a asp-action="Index">Back</a>
+<a asp-controller="Product" asp-action="ShowProducts" class="btn btn-success">
+    Show Products
+</a>
