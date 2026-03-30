@@ -1,0 +1,71 @@
+﻿@model ContactInfo
+
+<h2>Add Contact</h2>
+
+<form asp-action="AddContact" method="post" class="container">
+
+   
+
+    <div class="form-group">
+        <label>Contact Id</label>
+        <input asp-for="ContactId" class="form-control" />
+        <span asp-validation-for="ContactId" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Company Name</label>
+        <input asp-for="CompanyName" class="form-control" />
+        <span asp-validation-for="CompanyName" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="EmailId" class="form-control" />
+        <span asp-validation-for="EmailId" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Mobile</label>
+        <input asp-for="MobileNo" class="form-control" />
+        <span asp-validation-for="MobileNo" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Designation</label>
+        <input asp-for="Designation" class="form-control" />
+        <span asp-validation-for="Designation" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
