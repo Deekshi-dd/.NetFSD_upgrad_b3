@@ -1,0 +1,25 @@
+@model WebApplication3.Models.Product
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="ProductId" />
+
+    <div>
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName" class="form-control"/>
+    </div>
+
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control"/>
+    </div>
+
+    <div>
+        <label asp-for="Category"></label>
+        <input asp-for="Category" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
