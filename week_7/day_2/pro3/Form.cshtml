@@ -1,0 +1,39 @@
+ <div class="card p-4 shadow">
+        <h3 class="text-center mb-3">Feedback Form</h3>
+
+        <form method="post">
+
+            <div class="mb-3">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Comments</label>
+                <textarea name="comments" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label>Rating</label>
+                <select name="rating" class="form-select">
+                    <option value="">Select Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <button class="btn btn-success">Submit</button>
+        </form>
+
+        <!-- display feedback -->
+        @if (ViewData["Message"] != null)
+        {
+            <div class="alert alert-info mt-3 text-center">
+                @ViewData["Message"]
+            </div>
+        }
+
+    </div>
