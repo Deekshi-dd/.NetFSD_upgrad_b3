@@ -1,0 +1,37 @@
+﻿<div class="container mt-5">
+    <h3>Product Entry</h3>
+
+    <form method="post" action="/product/add" class="card p-4 shadow">
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+
+        <input type="text" name="name" class="form-control mb-2" placeholder="Product Name" />
+        <input type="text" name="price" class="form-control mb-2" placeholder="Price" />
+        <input type="text" name="quantity" class="form-control mb-2" placeholder="Quantity" />
+
+        <input type="hidden" name="existingData" value="@ViewBag.Hidden" />
+
+        <button class="btn btn-primary">Add Product</button>
+    </form>
+
+    <h4 class="mt-4">Product List</h4>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Details</th>
+        </tr>
+
+        @if (ViewBag.Products != null)
+        {
+            foreach (var item in ViewBag.Products)
+            {
+                <tr>
+                    <td>@item</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
