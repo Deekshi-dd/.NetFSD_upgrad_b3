@@ -1,0 +1,24 @@
+<h3 class="text-center mb-3">Simple Calculator</h3>
+        <hr />
+
+        <form method="post">
+
+            <div class="mb-3">
+                <label>Number 1</label>
+                <input type="number" name="num1" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Number 2</label>
+                <input type="number" name="num2" class="form-control" />
+            </div>
+
+            <button class="btn btn-success">Add</button>
+        </form>
+
+        @if (ViewData["Result"] != null)
+        {
+            <h2 class="mt-4">
+                Result: @ViewData["Result"]
+            </h2>
+        }
