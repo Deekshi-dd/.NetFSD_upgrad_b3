@@ -1,0 +1,58 @@
+@model ContactInfo
+
+<div class="container mt-4">
+    <div class="card p-4 shadow">
+
+        <h3 class="mb-3">Add Contact</h3>
+
+        <form asp-action="AddContact">
+
+            <div class="mb-3">
+                <label>Contact Id</label>
+                <input asp-for="ContactId" class="form-control" />
+                <span asp-validation-for="ContactId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label>First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label>Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label>Company</label>
+                <input asp-for="CompanyName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="EmailId" class="form-control" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label>Mobile</label>
+                <input asp-for="MobileNo" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Designation</label>
+                <input asp-for="Designation" class="form-control" />
+            </div>
+
+            <button class="btn btn-success">Save</button>
+            <a class="btn btn-secondary" asp-action="ShowContacts">Back</a>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
