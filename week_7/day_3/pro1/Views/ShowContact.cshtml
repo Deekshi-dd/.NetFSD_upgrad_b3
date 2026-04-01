@@ -1,0 +1,56 @@
+﻿@model List<WebApplication2.Models.ContactInfo>
+
+<h2 class="mb-4">Contact List</h2>
+<hr />
+
+<form asp-action="GetContactById" method="get" class="d-flex mb-3">
+
+    <input type="number"
+           name="id"
+           class="form-control me-2"
+           placeholder="Enter Contact ID"
+           required />
+
+    <button class="btn btn-primary">Search</button>
+
+    <a class="btn btn-secondary ms-2" asp-action="ShowContacts">Reset</a>
+
+</form>
+
+<div class="mb-3">
+
+    <a class="btn btn-success" asp-action="AddContact">Add Contact</a>
+</div>
+
+<table class="table table-bordered table-secondary">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (ContactInfo c in Model)
+        {
+            <tr>
+                <td>@c.ContactId</td>
+                <td>@c.FirstName @c.LastName</td>
+                <td>@c.CompanyName</td>
+                <td>@c.EmailId</td>
+                <td>@c.MobileNo</td>
+                <td>
+                    <a class="btn btn-info btn-sm"
+                       asp-action="GetContactById"
+                       asp-route-id="@c.ContactId">
+                        View
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
