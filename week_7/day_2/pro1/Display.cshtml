@@ -1,0 +1,21 @@
+<div class="card p-4 shadow mb-4">
+    <h3 class="mb-3">Student Details</h3>
+    <hr/> 
+
+<!-- Message -->
+@if (ViewBag.Message != null)
+{
+    <h4 class="text-danger">
+        @ViewBag.Message
+    </h4>
+}
+
+<!-- Display Data -->
+@if (ViewBag.Name != null)
+{
+        <p><b>Name:</b> @ViewBag.Name</p>
+        <p><b>Age:</b> @ViewBag.Age</p>
+        <p><b>Course:</b> @ViewBag.Course</p>
+   
+}
+</div>
