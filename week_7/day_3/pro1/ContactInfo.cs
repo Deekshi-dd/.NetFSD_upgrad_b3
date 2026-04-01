@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication2.Models
+namespace WebApplication10.Models
 {
     public class ContactInfo
     {
