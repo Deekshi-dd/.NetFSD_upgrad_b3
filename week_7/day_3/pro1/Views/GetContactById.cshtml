@@ -1,0 +1,25 @@
+﻿@model WebApplication10.Models.ContactInfo
+
+<div class="card p-4">
+
+    <h3 class="mb-3">Contact Details</h3>
+    <hr />
+
+    @if (Model == null)
+    {
+        <div class="text-danger">Contact not found</div>
+    }
+    else
+    {
+        <p><b>ID:</b> @Model.ContactId</p>
+        <p><b>Name:</b> @Model.FirstName @Model.LastName</p>
+        <p><b>Company:</b> @Model.CompanyName</p>
+        <p><b>Email:</b> @Model.EmailId</p>
+        <p><b>Mobile:</b> @Model.MobileNo</p>
+        <p><b>Designation:</b> @Model.Designation</p>
+
+
+        <a class="btn btn-secondary" asp-action="ShowContacts">Back</a>
+    }
+
+</div>
