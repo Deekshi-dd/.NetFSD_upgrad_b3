@@ -1,0 +1,42 @@
+@model List<WebApplication11.Models.Movie>
+@{ ViewData["Title"] = "All Movies"; }
+
+<h2 class="mb-4">Movie Catalog</h2>
+<a href="/Movie/Create" class="btn btn-success mb-3">+ Add Movie</a>
+
+@if (Model == null || Model.Count == 0)
+{
+    <div class="alert alert-info">No movies found. Add one!</div>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@movie.Genre</td>
+                    <td>@movie.ReleaseDate.ToString("dd MMM yyyy")</td>
+                    <td>₹@movie.Price</td>
+                    <td>@movie.Rating</td>
+                    <td>
+                        <a href="/Movie/Details/@movie.Id" class="btn btn-sm btn-info">Details</a>
+                        <a href="/Movie/Edit/@movie.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/Movie/Delete/@movie.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
