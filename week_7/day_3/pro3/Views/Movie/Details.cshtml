@@ -1,0 +1,18 @@
+@model WebApplication11.Models.Movie
+@{ ViewData["Title"] = "Movie Details"; }
+
+<h2 class="mb-4">Movie Details</h2>
+
+<div class="card" style="max-width:500px;">
+    <div class="card-body">
+        <table class="table table-borderless">
+            <tr><th>Title</th><td>@Model.Title</td></tr>
+            <tr><th>Genre</th><td>@Model.Genre</td></tr>
+            <tr><th>Release Date</th><td>@Model.ReleaseDate.ToString("dd MMM yyyy")</td></tr>
+            <tr><th>Price</th><td>₹@Model.Price</td></tr>
+            <tr><th>Rating</th><td>@Model.Rating</td></tr>
+        </table>
+        <a href="/Movie/Edit/@Model.Id" class="btn btn-warning">Edit</a>
+        <a href="/Movie/Index" class="btn btn-secondary ms-2">Back</a>
+    </div>
+</div>
