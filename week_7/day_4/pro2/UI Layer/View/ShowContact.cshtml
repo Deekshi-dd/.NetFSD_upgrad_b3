@@ -1,0 +1,37 @@
+@model List<DataAccessLayer.Models.ContactInfo>
+
+<h2>All Contacts</h2>
+<a href="/Contact/Add" class="btn btn-primary mb-3">+ Add Contact</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Designation</th>
+            <th>Company</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.FirstName @c.LastName</td>
+                <td>@c.EmailId</td>
+                <td>@c.MobileNo</td>
+                <td>@c.Designation</td>
+                <td>@c.Company?.CompanyName</td>
+                <td>@c.Department?.DepartmentName</td>
+                <td>
+                    <a href="/Contact/Details/@c.ContactId">View</a> |
+                    <a href="/Contact/Edit/@c.ContactId">Edit</a> |
+                    <a href="/Contact/Delete/@c.ContactId"
+                       onclick="return confirm('Delete this contact?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
