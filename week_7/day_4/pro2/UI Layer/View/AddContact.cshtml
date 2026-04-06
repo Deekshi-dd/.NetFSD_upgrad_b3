@@ -1,0 +1,21 @@
+<form asp-action="AddContact" method="post">
+
+    <input asp-for="FirstName" placeholder="First Name" />
+    <input asp-for="LastName" placeholder="Last Name" />
+
+    <input asp-for="EmailId" placeholder="Email" />
+    <input asp-for="MobileNo" placeholder="Mobile" />
+
+    <input asp-for="Designation" placeholder="Designation" />
+
+    <select asp-for="CompanyId" asp-items="ViewBag.Companies">
+        <option value="">--Select Company--</option>
+    </select>
+
+    <select asp-for="DepartmentId" asp-items="ViewBag.Departments">
+        <option value="">--Select Department--</option>
+    </select>
+
+    <button type="submit">Save</button>
+
+</form>
