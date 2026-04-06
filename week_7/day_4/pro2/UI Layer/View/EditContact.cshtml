@@ -1,0 +1,47 @@
+@model DataAccessLayer.Models.ContactInfo
+
+<h2>Edit Contact</h2>
+
+<form asp-action="EditContact" method="post">
+    <input asp-for="ContactId" type="hidden" />
+    <div class="mb-2">
+        <label>First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Email</label>
+        <input asp-for="EmailId" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Mobile No</label>
+        <input asp-for="MobileNo" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Designation</label>
+        <input asp-for="Designation" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label>Company</label>
+        <select asp-for="CompanyId" class="form-control">
+            @foreach (var co in ViewBag.Companies)
+            {
+                <option value="@co.CompanyId">@co.CompanyName</option>
+            }
+        </select>
+    </div>
+    <div class="mb-2">
+        <label>Department</label>
+        <select asp-for="DepartmentId" class="form-control">
+            @foreach (var d in ViewBag.Departments)
+            {
+                <option value="@d.DepartmentId">@d.DepartmentName</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-warning">Update</button>
+    <a href="/Contact/ShowContacts" class="btn btn-secondary">Cancel</a>
+</form>
