@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApplication5.Models.Course>
+
+        <h2>Courses with Enrolled Students</h2>
+        <hr />
+   
+
+        @foreach (var course in Model)
+        {
+                        <h5 class="text-primary">@course.CourseName</h5>
+                    
+                        <table class="table table-bordered mt-2">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Student Id</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @if (course.Students != null && course.Students.Any())
+                                {
+                                    @foreach (var student in course.Students)
+                                    {
+                                        <tr>
+                                            <td>@student.StudentId</td>
+                                            <td>@student.StudentName</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="2" class="text-danger fw-bold">
+                                            No Students Enrolled
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+        }
+
+   
