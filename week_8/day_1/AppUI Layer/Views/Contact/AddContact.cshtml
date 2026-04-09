@@ -1,0 +1,66 @@
+﻿@model DataAccessLayer.Models.ContactInfo
+
+<div class="container mt-4">
+    <h2>Add Contact</h2>
+    <hr />
+
+    <form method="post">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+        <div class="mb-3">
+            <label>First Name</label>
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Last Name</label>
+            <input asp-for="LastName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input asp-for="EmailId" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Mobile</label>
+            <input asp-for="MobileNo" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Designation</label>
+            <input asp-for="Designation" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Company</label>
+            <select asp-for="CompanyId" class="form-control">
+                <option value="">--Select Company--</option>
+                @foreach (var c in ViewBag.Companies)
+                {
+                    <option value="@c.CompanyId">@c.CompanyName</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Department</label>
+            <select asp-for="DepartmentId" class="form-control">
+                <option value="">--Select Department--</option>
+                @foreach (var d in ViewBag.Departments)
+                {
+                    <option value="@d.DepartmentId">@d.DepartmentName</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+
+        <a asp-controller="Contact" asp-action="ShowContacts" class="btn btn-secondary">
+            Back
+        </a>
+    </form>
+</div>
