@@ -1,4 +1,4 @@
-﻿namespace WebApplication5.Models
+﻿namespace WebApplication14.Models
 {
     public class Course
     {
