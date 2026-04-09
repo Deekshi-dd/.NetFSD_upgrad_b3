@@ -1,0 +1,66 @@
+﻿@model DataAccessLayer.Models.ContactInfo
+
+<div class="container mt-4">
+    <h2>Edit Contact</h2>
+    <hr />
+
+    <form asp-controller="Contact" asp-action="EditContact" method="post">
+
+        <input type="hidden" asp-for="ContactId" />
+
+        <div class="mb-3">
+            <label>First Name</label>
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Last Name</label>
+            <input asp-for="LastName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input asp-for="EmailId" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Mobile</label>
+            <input asp-for="MobileNo" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Designation</label>
+            <input asp-for="Designation" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Company</label>
+            <select asp-for="CompanyId" class="form-control">
+                @foreach (var c in ViewBag.Companies)
+                {
+                    <option value="@c.CompanyId" selected="@(c.CompanyId == Model.CompanyId)">
+                        @c.CompanyName
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Department</label>
+            <select asp-for="DepartmentId" class="form-control">
+                @foreach (var d in ViewBag.Departments)
+                {
+                    <option value="@d.DepartmentId" selected="@(d.DepartmentId == Model.DepartmentId)">
+                        @d.DepartmentName
+                    </option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Update</button>
+
+        <a asp-controller="Contact" asp-action="ShowContacts" class="btn btn-secondary">
+            Back
+        </a>
+    </form>
+</div>
