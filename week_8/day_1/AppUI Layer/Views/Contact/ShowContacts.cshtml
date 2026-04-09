@@ -1,0 +1,25 @@
+@model List<ContactInfo>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Company</th>
+        <th>Department</th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var c in Model)
+{
+    <tr>
+        <td>@c.FirstName @c.LastName</td>
+        <td>@c.EmailId</td>
+        <td>@c.CompanyName</td>
+        <td>@c.DepartmentName</td>
+        <td>
+            <a href="/contacts/edit/@c.ContactId">Edit</a>
+            <a href="/contacts/delete/@c.ContactId">Delete</a>
+        </td>
+    </tr>
+}
+</table>
